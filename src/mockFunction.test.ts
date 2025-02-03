@@ -25,3 +25,44 @@ test("obj.minus에 스파이를 심고 리턴값을 바꾸게 (MockReturnValue)"
   jest.spyOn(obj, "add").mockReturnValue(3);
   expect(obj.add(1, 2)).toBe(3);
 });
+
+/**
+ * & descride  안에있ㄲ는 before~은 안에서만 실행된다
+ * * 바깥은 전부 다 실행된다
+ * ^ 말그대로 그룹화~
+ */
+describe("beforEach/afterEach", () => {
+  test("1", () => {});
+  test("2", () => {});
+
+  beforeAll(() => {
+    console.log("이 파일에 준비사항 실행");
+  });
+
+  beforeEach(() => {
+    console.log("각 테스트 전에 실행");
+  });
+});
+
+beforeAll(() => {
+  console.log("이 파일에 준비사항 실행");
+});
+
+beforeEach(() => {
+  console.log("각 테스트 전에 실행");
+});
+
+afterEach(() => {
+  console.log("각 테스트 후에 실행");
+
+  // 싹다 제거
+  jest.restoreAllMocks();
+});
+
+afterAll(() => {
+  console.log("모든 테스트가 끝난 후");
+});
+
+test.todo("테스트 나중에 만들어야지 ~");
+
+test.skip("정말 급할떄 스킵", () => {});
