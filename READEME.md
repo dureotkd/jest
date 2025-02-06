@@ -19,5 +19,9 @@ npx cross-env NODE_OPTIONS="$NODE_OPTIONS --experimental-vm-modules" jest
 ```
 
 ```bash
+npm i -D jest-extended
+```
+
+```bash
 npx jest
 ```
